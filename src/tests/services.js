@@ -33,4 +33,5 @@ const service = {
   findAllUsers
 }
 
+
 export default service;

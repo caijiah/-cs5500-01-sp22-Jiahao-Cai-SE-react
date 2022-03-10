@@ -1,5 +1,5 @@
 import React from "react";
-import Tuits from "../tuits";
+import Tuits from "../tuits/tuits";
 import {Link} from "react-router-dom";
 
 const Profile = () => {
