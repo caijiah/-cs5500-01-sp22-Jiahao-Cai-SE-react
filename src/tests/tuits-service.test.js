@@ -202,7 +202,7 @@ describe('can retrieve all tuits with REST API', () => {
             const content = tuitContents.find(cont => cont === tuit.tuit);
             expect(tuit.tuit).toEqual(content);
             expect(tuit.postedOn).toEqual("2022-03-09T00:00:00.000Z")
-            expect(tuit.postedBy).toEqual(author._id)
+            expect(tuit.postedBy._id).toEqual(author._id)
         })
     })
 });
