@@ -1,6 +1,6 @@
 import axios from "axios";
-const BASE_URL = "https://cs5500-node-a3.herokuapp.com/api";
-// const BASE_URL = "http://localhost:4000/api";
+// const BASE_URL = "https://cs5500-node-a3.herokuapp.com/api";
+const BASE_URL = "http://localhost:4000/api";
 const TUITS_API = `${BASE_URL}/tuits`;
 const USERS_API = `${BASE_URL}/users`;
 
