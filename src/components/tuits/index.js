@@ -8,27 +8,28 @@ import * as authService from "../../services/auth-service";
 const Tuits = ({tuits = [], refreshTuits}) => {
     const [profile, setProfile] = useState({});
     const [maintainTuits, setMaintainTuits] = useState(tuits);
-    const [loggedIn, setLoggedIn] = useState(false);
     useEffect(async ()=> {
         try {
             const user = await authService.profile();
             setProfile(user);
-            setLoggedIn(true);
             likeService.findAllTuitsLikedByUser("me")
                 .then((likes) => {
                     const likedTuitsIds = likes.map(l => l.tuit._id);
                     console.log(likedTuitsIds);
-                    const fetchLikesTuits = tuits.map((t) => {
-                        console.log(likedTuitsIds.indexOf(t._id));
+                    const fetchTuits = tuits.map((t) => {
+                        let copyT = t;
                         if (likedTuitsIds.indexOf(t._id) >= 0) {
-                            return {...t, likedbyMe: true};
+                            copyT = {...copyT, likedByMe: true};
                         }
-                        return t;
+                        if (t.postedBy._id === profile._id) {
+                            copyT = {...copyT, ownedByMe: true}
+                        }
+
+                        return copyT;
                     })
-                    setMaintainTuits(fetchLikesTuits);
+                    setMaintainTuits(fetchTuits);
                 })
         } catch (e) {
-            setLoggedIn(false)
         }
     }, [tuits]);
 
@@ -54,7 +55,6 @@ const Tuits = ({tuits = [], refreshTuits}) => {
           maintainTuits.map && maintainTuits.map(tuit => {
             return (
               <Tuit key={tuit._id}
-                    loggedIn={loggedIn}
                     deleteTuit={deleteTuit}
                     likeTuit={likeTuit}
                     tuit={tuit}/>

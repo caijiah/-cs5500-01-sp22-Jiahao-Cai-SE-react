@@ -14,8 +14,10 @@ const Tuit = ({tuit, deleteTuit, likeTuit}) => {
                 }
             </div>
             <div className="w-100">
-                <i onClick={() => deleteTuit(tuit._id)}
-                   className="fas fa-remove fa-2x fa-pull-right"/>
+                { tuit.ownedByMe === true &&
+                    <i onClick={() => deleteTuit(tuit._id)}
+                       className="fas fa-remove fa-2x fa-pull-right"/>
+                }
                 <h2
                     className="fs-5">
                     {tuit.postedBy && tuit.postedBy.username}
