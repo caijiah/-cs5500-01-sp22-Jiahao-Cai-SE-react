@@ -2,7 +2,7 @@ import React from "react";
 import './tuits.css';
 import Tuit from "./tuit";
 
-const Tuits = ({tuits = [], deleteTuit}) => {
+const Index = ({tuits = [], deleteTuit}) => {
     return (
     <div>
       <ul className="ttr-tuits list-group">
@@ -18,4 +18,4 @@ const Tuits = ({tuits = [], deleteTuit}) => {
   );
 }
 
-export default Tuits;
+export default Index;

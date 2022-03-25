@@ -1,7 +1,7 @@
-import Tuits from "../components/tuits/tuits";
+import Index from "../components/tuits";
 import {screen, render} from "@testing-library/react";
 import {HashRouter} from "react-router-dom";
-import {findAllTuits, deleteTuit, deleteTuitByContent, createTuit} from "../services/tuits-service";
+import {findAllTuits, deleteTuit, deleteTuitByContent, createTuitByUser} from "../services/tuits-service";
 import axios from "axios";
 import {createUser, deleteUsersByUsername} from "../services/users-service";
 
@@ -43,7 +43,7 @@ const MOCKED_TUITS = [
 test('tuit list renders static tuit array', () => {
     render(
         <HashRouter>
-            <Tuits tuits={MOCKED_TUITS} deleteTuit={deleteTuit}/>
+            <Index tuits={MOCKED_TUITS} deleteTuit={deleteTuit}/>
         </HashRouter>
     )
     MOCKED_TUITS.map(eachTuit => {
@@ -99,13 +99,13 @@ describe('tuit list renders async', ()=> {
         const author = await createUser(user);
         let promises = [];
         tuitContents.map(content => {
-            promises.push(createTuit(author._id, {tuit: content, postedOn: "2022-03-09T00:00:00.000Z"}));
+            promises.push(createTuitByUser(author._id, {tuit: content, postedOn: "2022-03-09T00:00:00.000Z"}));
         })
         await Promise.all(promises);
         const tuits = await findAllTuits();
         render(
             <HashRouter>
-                <Tuits tuits={tuits}/>
+                <Index tuits={tuits}/>
             </HashRouter>
         )
 
@@ -138,7 +138,7 @@ test('tuit list renders mocked', async () => {
 
     render(
         <HashRouter>
-            <Tuits tuits={tuits}/>
+            <Index tuits={tuits}/>
         </HashRouter>
     )
 

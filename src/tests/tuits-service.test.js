@@ -1,5 +1,5 @@
 import {
-    createTuit,
+    createTuitByUser,
     deleteTuitByContent,
     findTuitById,
     findAllTuits
@@ -48,7 +48,7 @@ describe('can create tuit with REST API', () => {
         // this user will be the author of the tuit
         const author = await createUser(ripley);
         // insert new tuit in the database
-        const newTuit = await createTuit(author._id, sampleTuit);
+        const newTuit = await createTuitByUser(author._id, sampleTuit);
 
         // verify inserted tuit's properties match parameter tuit
         expect(newTuit.tuit).toEqual(sampleTuit.tuit);
@@ -75,7 +75,7 @@ describe('can delete tuit with REST API', () => {
     beforeAll(async ()=> {
         // insert the sample tuit we then try to remove
         const newUser = await createUser(sowell);
-        return createTuit(newUser._id, sample);
+        return createTuitByUser(newUser._id, sample);
     })
 
     // clean up after test runs
@@ -125,7 +125,7 @@ describe('can retrieve a tuit by their primary key with REST API', () => {
     test('can retrieve tuit from REST API by primary key', async ()=> {
         // insert author of the tuit first
         const author = await createUser(adam);
-        const newTuit = await createTuit(author._id, sample);
+        const newTuit = await createTuitByUser(author._id, sample);
 
         // verify new tuit matches the parameter tuit
         expect(newTuit.tuit).toEqual(sample.tuit);
@@ -185,7 +185,7 @@ describe('can retrieve all tuits with REST API', () => {
         const author = await createUser(adam);
         // insert several tuits
         tuitContents.map(content => {
-            createTuit(author._id, {tuit: content, postedOn: "2022-03-09T00:00:00.000Z"});
+            createTuitByUser(author._id, {tuit: content, postedOn: "2022-03-09T00:00:00.000Z"});
         })
         // retrieve all tuits
         const tuits = await findAllTuits();
