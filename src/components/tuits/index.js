@@ -6,9 +6,11 @@ import * as tuitService from '../../services/tuits-service';
 import * as authService from "../../services/auth-service";
 
 const Tuits = ({tuits = [], refreshTuits}) => {
-    const [profile, setProfile] = useState({});
+    const [profile, setProfile] = useState(undefined);
     const [maintainTuits, setMaintainTuits] = useState(tuits);
+    console.log("from Tuits", maintainTuits)
     useEffect(async ()=> {
+        setMaintainTuits(tuits);
         try {
             const user = await authService.profile();
             setProfile(user);
@@ -34,8 +36,7 @@ const Tuits = ({tuits = [], refreshTuits}) => {
     }, [tuits]);
 
     const likeTuit = (tuit) => {
-        console.log(profile === {})
-        if (profile !== undefined || profile !== {}) {
+        if (profile !== undefined) {
             likeService.userTogglesTuitLikes("me", tuit._id)
                 .then(refreshTuits)
                 .catch(e => alert(e));

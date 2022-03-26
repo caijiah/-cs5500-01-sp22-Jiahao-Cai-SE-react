@@ -21,7 +21,7 @@ const Home = () => {
       setProfile(user);
     } catch (e) {
     }
-    findTuits()
+    await findTuits();
   }, []);
 
   // useEffect(() => {
