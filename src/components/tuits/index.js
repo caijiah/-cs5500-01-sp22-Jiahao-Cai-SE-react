@@ -9,7 +9,6 @@ import * as dislikeService from "../../services/dislikes-service"
 const Tuits = ({tuits = [], refreshTuits}) => {
     const [profile, setProfile] = useState(undefined);
     const [maintainTuits, setMaintainTuits] = useState(tuits);
-    console.log("from Tuits", maintainTuits)
     useEffect(async ()=> {
         setMaintainTuits(tuits);
         try {
@@ -20,7 +19,6 @@ const Tuits = ({tuits = [], refreshTuits}) => {
                 .then((likes) => {
                     const likedTuitsIds = likes.map(l => l.tuit._id);
                     const dislikedTuitsIds = dislikedTuits.map(d => d.tuit._id);
-                    console.log(likedTuitsIds);
                     const fetchTuits = tuits.map((t) => {
                         let copyT = t;
                         if (likedTuitsIds.indexOf(t._id) >= 0) {

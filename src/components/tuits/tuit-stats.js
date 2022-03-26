@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 
 const TuitStats = ({tuit, likeTuit, dislikeTuit}) => {
-    console.log("tuit stats is initialized", tuit.likedByMe)
     return (
         <div className="row mt-2">
             <div className="col">
