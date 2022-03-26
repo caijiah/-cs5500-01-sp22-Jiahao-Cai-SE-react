@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 
-const TuitStats = ({tuit, likeTuit}) => {
+const TuitStats = ({tuit, likeTuit, dislikeTuit}) => {
     console.log("tuit stats is initialized", tuit.likedByMe)
     return (
         <div className="row mt-2">
@@ -23,7 +23,7 @@ const TuitStats = ({tuit, likeTuit}) => {
               </span>
             </div>
             <div className="col">
-                <span>
+                <span onClick={()=>dislikeTuit(tuit)}>
                   {
                       tuit.stats && tuit.stats.dislikes !== undefined &&
                       <i className={"fa-regular fa-thumbs-down me-1"}
@@ -33,7 +33,7 @@ const TuitStats = ({tuit, likeTuit}) => {
               </span>
             </div>
             <div className="col">
-                <i className="far fa-inbox-out"></i>
+                <i className="far fa-inbox-out"/>
             </div>
         </div>
     );
