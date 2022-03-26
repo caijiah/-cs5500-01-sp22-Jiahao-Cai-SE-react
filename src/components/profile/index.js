@@ -3,6 +3,7 @@ import Tuits from "../tuits";
 import MyTuits from "./my-tuits";
 import {HashRouter, Link, Route, Routes, useNavigate, useLocation} from "react-router-dom";
 import * as service from "../../services/auth-service";
+import MyLikes from "./my-likes";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -56,14 +57,14 @@ const Profile = () => {
             There's space for everybody. Sparkles
           </p>
           <p>
-            <i className="far fa-location-dot me-2"></i>
+            <i className="far fa-location-dot me-2"/>
             Pale Blue Dot
-            <i className="far fa-link ms-3 me-2"></i>
+            <i className="far fa-link ms-3 me-2"/>
             <a href="nasa.gov" className="text-decoration-none">nasa.gov</a>
-            <i className="far fa-balloon ms-3 me-2"></i>
+            <i className="far fa-balloon ms-3 me-2"/>
             Born October 1, 1958
             <br/>
-            <i className="far fa-calendar me-2"></i>
+            <i className="far fa-calendar me-2"/>
             Joined December 2007
           </p>
           <b>178</b> Following
@@ -85,7 +86,7 @@ const Profile = () => {
                 Media</Link>
             </li>
             <li className="nav-item">
-              <Link to="/profile/likes"
+              <Link to="/profile/mylikes"
                     className="nav-link">
                 Likes</Link>
             </li>
@@ -98,8 +99,7 @@ const Profile = () => {
         {/*       element={<TuitsAndReplies/>}/>*/}
         {/*<Route path="/media"*/}
         {/*       element={<Media/>}/>*/}
-        {/*<Route path="/mylikes"*/}
-        {/*       element={<MyLikes/>}/>*/}
+        <Route path="/mylikes" element={<MyLikes/>}/>
       </Routes>
     </div>
   );
