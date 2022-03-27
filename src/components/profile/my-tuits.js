@@ -14,12 +14,8 @@ const MyTuits = () => {
         findMyTuits()
     }, []);
 
-    const deleteTuit = (tid) =>
-        service.deleteTuit(tid)
-            .then(findMyTuits);
-
     return (
-        <Tuits tuits={tuits} deleteTuit={deleteTuit}/>
+        <Tuits tuits={tuits} refreshTuits={findMyTuits}/>
     )
 }
 

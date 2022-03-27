@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import Index from "../tuits";
+import Tuits from "../tuits";
 import MyTuits from "./my-tuits";
 import {HashRouter, Link, Route, Routes, useNavigate, useLocation} from "react-router-dom";
 import * as service from "../../services/auth-service";

@@ -1,11 +1,11 @@
 import React from "react";
-import Index from "../tuits";
+import Tuits from "../tuits";
 
 function Bookmarks () {
   return(
     <div>
         <h1>Bookmarks Screen</h1>
-      <Index/>
+      <Tuits/>
     </div>
   );
 }

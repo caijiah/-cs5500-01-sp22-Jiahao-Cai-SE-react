@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "../tuits";
+import Tuits from "../tuits";
 import * as service from "../../services/tuits-service";
 import {useEffect, useState} from "react";
 import {useLocation, useParams} from "react-router-dom";
@@ -38,10 +38,6 @@ const Home = () => {
       setTuit("");
     }
   }
-
-  const deleteTuit = (tid) =>
-      service.deleteTuit(tid)
-          .then(findTuits)
 
   return(
     <div className="ttr-home">
@@ -82,7 +78,7 @@ const Home = () => {
           </div>
         }
       </div>
-      <Index tuits={tuits} deleteTuit={deleteTuit}/>
+      <Tuits tuits={tuits} refreshTuits={findTuits}/>
     </div>
   );
 };
