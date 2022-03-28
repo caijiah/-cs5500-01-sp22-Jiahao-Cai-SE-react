@@ -1,7 +1,7 @@
 import Index from "../components/tuits";
 import {screen, render} from "@testing-library/react";
 import {HashRouter} from "react-router-dom";
-import {findAllTuits, deleteTuit, deleteTuitByContent, createTuitByUser} from "../services/tuits-service";
+import {api, findAllTuits, deleteTuit, deleteTuitByContent, createTuitByUser} from "../services/tuits-service";
 import axios from "axios";
 import {createUser, deleteUsersByUsername} from "../services/users-service";
 
@@ -128,7 +128,7 @@ describe('tuit list renders async', ()=> {
 })
 
 test('tuit list renders mocked', async () => {
-    const mock = jest.spyOn(axios, 'get');
+    const mock = jest.spyOn(api, 'get');
     mock.mockImplementation(() =>
                                 Promise.resolve({data: {tuits: MOCKED_TUITS}}));
     const response = await findAllTuits();

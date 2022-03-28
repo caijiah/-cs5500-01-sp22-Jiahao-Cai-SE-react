@@ -15,13 +15,17 @@ const Home = () => {
   }
   const [profile, setProfile] = useState({});
 
-  useEffect(async () => {
+  useEffect(() => {
     try {
-      const user = await authService.profile();
-      setProfile(user);
+      authService.profile()
+          .then((user) => {
+            if (user) {
+              setProfile(user);
+            }
+          });
     } catch (e) {
     }
-    findTuits()
+    findTuits();
   }, []);
 
   // useEffect(() => {
