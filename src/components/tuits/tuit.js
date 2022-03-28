@@ -45,10 +45,10 @@ const Tuit = ({tuit, deleteTuit, likeTuit, dislikeTuit}) => {
             <div className="w-100">
                 { tuit.ownedByMe === true &&
                     <i onClick={() => deleteTuit(tuit._id)}
-                       className="fas fa-remove fa-2x fa-pull-right"/>
+                       className="fas fa-remove tuit-button fa-2x fa-pull-right"/>
                 }
                 <Link to={`/tuit/${tuit._id}`}>
-                    <i className="float-end fas fa-circle-ellipsis me-1"/>
+                    <i className="float-end tuit-button fas fa-circle-ellipsis me-1"/>
                 </Link>
                 <h2
                     className="fs-5">

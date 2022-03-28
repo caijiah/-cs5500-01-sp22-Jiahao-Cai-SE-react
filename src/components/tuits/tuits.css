@@ -11,3 +11,7 @@
     content: "";
     padding-top: 56.25%;
 }
+
+.tuit-button {
+    cursor: pointer;
+}
