@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
 import MyTuits from "./my-tuits";
-import {Link, Route, Routes, useNavigate} from "react-router-dom";
+import {Link, Route, Routes, useLocation, useNavigate} from "react-router-dom";
 import * as service from "../../services/auth-service";
 import MyLikes from "./my-likes";
 import MyDislikes from "./my-dislikes";
 
 const Profile = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [profile, setProfile] = useState({});
 
   useEffect(async () => {
@@ -72,27 +73,27 @@ const Profile = () => {
           <ul className="mt-4 nav nav-pills nav-fill">
             <li className="nav-item">
               <Link to="/profile/mytuits"
-                    className="nav-link active">
+                    className={`nav-link ${location.pathname.indexOf('mytuits') >= 0 ? 'active':''}`}>
                 Tuits</Link>
             </li>
             <li className="nav-item">
               <Link to="/profile/tuits-and-replies"
-                    className="nav-link">
+                    className={`nav-link ${location.pathname.indexOf('tuits-and-replies') >= 0 ? 'active':''}`}>
                 Tuits & replies</Link>
             </li>
             <li className="nav-item">
               <Link to="/profile/media"
-                    className="nav-link">
+                    className={`nav-link ${location.pathname.indexOf('media') >= 0 ? 'active':''}`}>
                 Media</Link>
             </li>
             <li className="nav-item">
               <Link to="/profile/mylikes"
-                    className="nav-link">
+                    className={`nav-link ${location.pathname.indexOf('mylikes') >= 0 ? 'active':''}`}>
                 Likes</Link>
             </li>
             <li className="nav-item">
               <Link to="/profile/mydislikes"
-                    className="nav-link">
+                    className={`nav-link ${location.pathname.indexOf('mydislikes') >= 0 ? 'active':''}`}>
                 Dislikes
               </Link>
             </li>
