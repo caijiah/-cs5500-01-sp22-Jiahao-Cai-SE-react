@@ -3,13 +3,15 @@ import * as service from '../../services/likes-service'
 import {useEffect, useState} from "react";
 
 const MyLikes = () => {
-    const [likedTuits, setLikedTuits] = useState();
-    const findTuitsILike = () =>
+    const [likedTuits, setLikedTuits] = useState([]);
+
+    const findTuitsILike = () => {
         service.findAllTuitsLikedByUser("me")
             .then((tuits) => {
                 console.log(tuits);
                 setLikedTuits(tuits)
             })
+    }
 
     useEffect(()=> {
         findTuitsILike()
