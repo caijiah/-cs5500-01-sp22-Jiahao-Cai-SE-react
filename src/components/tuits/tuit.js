@@ -1,3 +1,6 @@
+/**
+ * @file Implement Tuit component for displaying each tuit
+ */
 import React, {useEffect} from "react";
 import TuitStats from "./tuit-stats";
 import TuitImage from "./tuit-image";

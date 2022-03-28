@@ -178,7 +178,6 @@ describe("user can dislike a tuit when they already likes the tuit with API", ()
         expect(newTuit.stats.likes).toEqual(0);
         expect(newTuit.stats.dislikes).toEqual(1);
     })
-})
 
 describe("can retrieve all tuits disliked by user with API",()=> {
     // sample tuit to insert
@@ -276,5 +275,4 @@ describe("can retrieve all tuits disliked by user with API",()=> {
             expect(likedTuitsId.indexOf(t._id)).toBeLessThanOrEqual(-1);
         })
     })
-
 })
