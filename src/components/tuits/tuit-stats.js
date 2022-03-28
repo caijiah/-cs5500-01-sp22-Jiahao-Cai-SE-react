@@ -1,5 +1,14 @@
+/**
+ * @file Implements TuitStats component for displaying tuit's stats
+ */
 import React, {useEffect} from "react";
 
+/**
+ * TuitStats component that will display stats of each tuit
+ * @param tuit The tuit
+ * @param likeTuit callback function for liking a tuit
+ * @param dislikeTuit callback function for disliking a tuit
+ */
 const TuitStats = ({tuit, likeTuit, dislikeTuit}) => {
     return (
         <div className="row mt-2">
