@@ -1,3 +1,7 @@
+/**
+ * @file Implements Profile component for display profile page for a user
+ * It contains links to my-tuits, my-likes and my-dislikes
+ */
 import React, {useEffect, useState} from "react";
 import MyTuits from "./my-tuits";
 import {Link, Route, Routes, useNavigate} from "react-router-dom";
@@ -18,6 +22,9 @@ const Profile = () => {
     }
   }, []);
 
+  /**
+   * Helper function for destroy the sessions
+   */
   const logout = () => {
     service.logout()
         .then(() => navigate('/login'))
