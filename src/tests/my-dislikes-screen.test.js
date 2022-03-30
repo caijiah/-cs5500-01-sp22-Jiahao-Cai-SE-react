@@ -4,7 +4,11 @@
 import {render, screen, waitFor} from "@testing-library/react";
 import React from "react";
 import MyDislikes from "../components/profile/my-dislikes";
-import {api} from "../services/dislikes-service";
+import {api, userTogglesTuitDislikes} from "../services/dislikes-service";
+import {createUser, deleteUsersByUsername} from "../services/users-service";
+import {createTuitByUser, deleteTuitByContent, findTuitById} from "../services/tuits-service";
+import {userTogglesTuitLikes} from "../services/likes-service";
+import {login, logout, signup} from "../services/auth-service";
 
 /**
  * Mock disliked tuits with stats that contains dislikes count

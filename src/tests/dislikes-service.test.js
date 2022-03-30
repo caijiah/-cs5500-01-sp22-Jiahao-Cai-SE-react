@@ -4,7 +4,7 @@
 import {createTuitByUser, deleteTuitByContent, findTuitById} from "../services/tuits-service";
 import {findAllTuitsDislikedByUser, userTogglesTuitDislikes} from "../services/dislikes-service";
 import {userTogglesTuitLikes} from "../services/likes-service";
-import {findUserById, createUser, deleteUsersByUsername} from "../services/users-service";
+import {createUser, deleteUsersByUsername} from "../services/users-service";
 
 describe('user can dislike a tuit with REST API', () => {
     // sample tuit to insert
@@ -262,18 +262,18 @@ describe("can retrieve all tuits disliked by user with API", () => {
 
     test("can retrieve all tuits disliked by user with API", async () => {
         const dislikedTuits = await findAllTuitsDislikedByUser(uid);
-        // // make sure there are only 2 disliked tuits
-        // expect(dislikedTuits.length).toBeGreaterThanOrEqual(2);
-        // const dislikedTuitsId = [tid2, tid3];
-        // const likedTuitsId = [tid1];
-        // // make sure each disliked tuits' id are in dislikedTuitsId which is tid2 and tid3
-        // dislikedTuits.forEach((t) => {
-        //     expect(dislikedTuitsId.indexOf(t._id)).toBeGreaterThanOrEqual(0);
-        // })
-        //
-        // // make sure the dislikedTuits don't contain tid1
-        // dislikedTuits.forEach((t) => {
-        //     expect(likedTuitsId.indexOf(t._id)).toBeLessThanOrEqual(-1);
-        // })
+        // make sure there are only 2 disliked tuits
+        expect(dislikedTuits.length).toBeGreaterThanOrEqual(2);
+        const dislikedTuitsId = [tid2, tid3];
+        const likedTuitsId = [tid1];
+        // make sure each disliked tuits' id are in dislikedTuitsId which is tid2 and tid3
+        dislikedTuits.forEach((t) => {
+            expect(dislikedTuitsId.indexOf(t._id)).toBeGreaterThanOrEqual(0);
+        })
+
+        // make sure the dislikedTuits don't contain tid1
+        dislikedTuits.forEach((t) => {
+            expect(likedTuitsId.indexOf(t._id)).toBeLessThanOrEqual(-1);
+        })
     })
 })
