@@ -64,7 +64,8 @@ describe('user can dislike a tuit with REST API', () => {
 
 });
 
-describe('user can un-dislikes a tuit with REST API', () => {
+describe('user can un-dislikes a tuit with REST API '
+         + 'if they already disliked the tuit', () => {
     // sample tuit to insert
     const sampleTuit = {
         tuit: "Unique sample tuit for test!",
@@ -107,7 +108,8 @@ describe('user can un-dislikes a tuit with REST API', () => {
         return Promise.all(promises);
     })
 
-    test("user can dislike a tuit", async () => {
+    test("user can un-dislike a tuit "
+         + "if they already disliked the tuit",async () => {
         newTuit = await findTuitById(tid);
         // user already dislikes the tuit, so count of dislikes is 1.
         expect(newTuit.stats.dislikes).toEqual(1);
@@ -166,7 +168,8 @@ describe("user can dislike a tuit when they already likes the tuit with API", ()
         return Promise.all(promises);
     })
 
-    test("user can dislike a tuit", async () => {
+    test("user can dislike a tuit when "
+         + "they already likes the tuit with API",async () => {
         newTuit = await findTuitById(tid);
         // user already likes the tuit, so count of likes is 1, count of dislikes is 0.
         expect(newTuit.stats.likes).toEqual(1);
