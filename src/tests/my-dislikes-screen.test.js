@@ -62,13 +62,6 @@ describe('my dislikes screen renders disliked tuit mocked '
             return  Promise.resolve({data: MOCKED_DISLIKED_TUITS});
         });
 
-        // question: why act not work?
-        // act(()=> {
-        //     render(
-        //         <MyDislikes/>
-        //     )
-        // })
-
         render(
             <MyDislikes/>
         )
