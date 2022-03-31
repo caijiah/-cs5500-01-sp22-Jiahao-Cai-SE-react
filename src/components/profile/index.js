@@ -1,11 +1,17 @@
+/**
+ * @file Implements Profile component for display profile page for a user
+ * It contains links to my-tuits, my-likes and my-dislikes
+ */
 import React, {useEffect, useState} from "react";
-import Tuits from "../tuits";
 import MyTuits from "./my-tuits";
-import {HashRouter, Link, Route, Routes, useNavigate, useLocation} from "react-router-dom";
+import {Link, Route, Routes, useLocation, useNavigate} from "react-router-dom";
 import * as service from "../../services/auth-service";
+import MyLikes from "./my-likes";
+import MyDislikes from "./my-dislikes";
 
 const Profile = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [profile, setProfile] = useState({});
 
   useEffect(async () => {
@@ -17,6 +23,9 @@ const Profile = () => {
     }
   }, []);
 
+  /**
+   * Helper function for destroy the sessions
+   */
   const logout = () => {
     service.logout()
         .then(() => navigate('/login'))
@@ -56,14 +65,14 @@ const Profile = () => {
             There's space for everybody. Sparkles
           </p>
           <p>
-            <i className="far fa-location-dot me-2"></i>
+            <i className="far fa-location-dot me-2"/>
             Pale Blue Dot
-            <i className="far fa-link ms-3 me-2"></i>
+            <i className="far fa-link ms-3 me-2"/>
             <a href="nasa.gov" className="text-decoration-none">nasa.gov</a>
-            <i className="far fa-balloon ms-3 me-2"></i>
+            <i className="far fa-balloon ms-3 me-2"/>
             Born October 1, 1958
             <br/>
-            <i className="far fa-calendar me-2"></i>
+            <i className="far fa-calendar me-2"/>
             Joined December 2007
           </p>
           <b>178</b> Following
@@ -71,23 +80,29 @@ const Profile = () => {
           <ul className="mt-4 nav nav-pills nav-fill">
             <li className="nav-item">
               <Link to="/profile/mytuits"
-                    className="nav-link active">
+                    className={`nav-link ${location.pathname.indexOf('mytuits') >= 0 ? 'active':''}`}>
                 Tuits</Link>
             </li>
             <li className="nav-item">
               <Link to="/profile/tuits-and-replies"
-                    className="nav-link">
+                    className={`nav-link ${location.pathname.indexOf('tuits-and-replies') >= 0 ? 'active':''}`}>
                 Tuits & replies</Link>
             </li>
             <li className="nav-item">
               <Link to="/profile/media"
-                    className="nav-link">
+                    className={`nav-link ${location.pathname.indexOf('media') >= 0 ? 'active':''}`}>
                 Media</Link>
             </li>
             <li className="nav-item">
-              <Link to="/profile/likes"
-                    className="nav-link">
+              <Link to="/profile/mylikes"
+                    className={`nav-link ${location.pathname.indexOf('mylikes') >= 0 ? 'active':''}`}>
                 Likes</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/profile/mydislikes"
+                    className={`nav-link ${location.pathname.indexOf('mydislikes') >= 0 ? 'active':''}`}>
+                Dislikes
+              </Link>
             </li>
           </ul>
         </div>
@@ -98,8 +113,8 @@ const Profile = () => {
         {/*       element={<TuitsAndReplies/>}/>*/}
         {/*<Route path="/media"*/}
         {/*       element={<Media/>}/>*/}
-        {/*<Route path="/mylikes"*/}
-        {/*       element={<MyLikes/>}/>*/}
+        <Route path="/mylikes" element={<MyLikes/>}/>
+        <Route path="/mydislikes" element={<MyDislikes/>}/>
       </Routes>
     </div>
   );

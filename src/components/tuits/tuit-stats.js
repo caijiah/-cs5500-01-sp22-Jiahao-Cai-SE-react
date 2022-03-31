@@ -24,7 +24,7 @@ const TuitStats = ({tuit, likeTuit, dislikeTuit}) => {
               <span onClick={() => likeTuit(tuit)}>
                   {
                       tuit.stats && tuit.stats.likes !== undefined &&
-                      <i className={"fa-regular fa-thumbs-up me-1"}
+                      <i className={"fa-regular fa-thumbs-up tuit-button me-1"}
                          style={tuit.likedByMe === true ? {color: "blue"} : {}}/>
                   }
                   {tuit.stats && <span>{tuit.stats.likes}</span>}
@@ -34,7 +34,7 @@ const TuitStats = ({tuit, likeTuit, dislikeTuit}) => {
                 <span onClick={()=>dislikeTuit(tuit)}>
                   {
                       tuit.stats && tuit.stats.dislikes !== undefined &&
-                      <i className={"fa-regular fa-thumbs-down me-1"}
+                      <i className={"fa-regular fa-thumbs-down tuit-button me-1"}
                          style={tuit.dislikedByMe === true ? {color: "red"} : {}}/>
                   }
                     {tuit.stats && <span>{tuit.stats.dislikes}</span>}
