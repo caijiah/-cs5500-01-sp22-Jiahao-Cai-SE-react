@@ -5,6 +5,7 @@ import {render, screen, waitFor} from "@testing-library/react";
 import React from "react";
 import MyDislikes from "../components/profile/my-dislikes";
 import {api} from "../services/dislikes-service";
+import {HashRouter} from "react-router-dom";
 
 /**
  * Mock disliked tuits with stats that contains dislikes count
@@ -63,7 +64,9 @@ describe('my dislikes screen renders disliked tuit mocked '
         });
 
         render(
-            <MyDislikes/>
+            <HashRouter>
+                <MyDislikes/>
+            </HashRouter>
         )
 
         await waitFor(() => {
