@@ -20,7 +20,7 @@ const MOCKED_TUIT = {
         email: "alice@weyland.com",
         _id: "123"
     },
-    stats: {dislikes: 555},
+    stats: {likes: 125, replies: 235, dislikes: 555},
     likedByMe: true,
     _id: "12"
 }
